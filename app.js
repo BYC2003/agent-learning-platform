@@ -183,6 +183,9 @@
     var target = $("#view-" + view);
     if (!target) { view = "dashboard"; target = $("#view-dashboard"); }
 
+    currentView = view;
+    currentArg = arg || null;
+
     $$(".view").forEach(function (v) { v.classList.remove("active"); });
     target.classList.add("active");
 
@@ -765,10 +768,11 @@
   function rerender() {
     syncNotesFromDOM();
     var sc = $("#main").scrollTop;
+    var pageY = window.scrollY || document.documentElement.scrollTop || 0;
     navigate(currentView, currentArg);
-refreshChrome();
+    refreshChrome();
     $("#main").scrollTop = sc;
-    window.scrollTo(0, 0);
+    window.scrollTo(0, pageY);
   }
 
   function download(filename, text, mime) {
