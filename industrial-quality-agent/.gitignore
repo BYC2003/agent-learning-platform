@@ -1,0 +1,9 @@
+# Python 缓存
+__pycache__/
+*.py[cod]
+
+# 测试缓存
+.pytest_cache/
+
+# 生成的数据默认不提交版本库
+data/synthetic_demo/
